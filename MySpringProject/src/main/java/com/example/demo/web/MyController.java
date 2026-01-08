@@ -18,7 +18,7 @@ public class MyController {
 		LocalDate ldt = LocalDate.now();
 		String dt = ldt.format(DateTimeFormatter.ofPattern("d-M-yyyy"));
 		LocalTime ltm = LocalTime.now();
-		String tm = ldt.format(DateTimeFormatter.ofPattern("H-m-s"));
+		String tm = ltm.format(DateTimeFormatter.ofPattern("H-m-s"));
 		DateDto dto = new DateDto(dt, tm);
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
