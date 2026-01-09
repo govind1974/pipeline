@@ -3,7 +3,9 @@ package com.example.demo.web;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -38,6 +40,17 @@ public class MyController {
     	    	    return new ResponseEntity<>(map.get(eid), HttpStatus.OK);
     	    }
     	    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+    
+    @GetMapping("/viewall")
+    public ResponseEntity<List<EmpDto>> getAllEmp() {
+    	    Map<Integer, EmpDto> map = new HashMap<>();
+    	    map.put(1001, new EmpDto(1001, "rama", 56000.0));
+    	    map.put(1002, new EmpDto(1002, "tom", 46000.0));
+    	    map.put(1003, new EmpDto(1003, "sam", 66000.0));
+    	    List<EmpDto> lst = new ArrayList<>(map.values()); 
+    	    	return new ResponseEntity<>(lst, HttpStatus.OK);
+    	    
     }
 }
 
